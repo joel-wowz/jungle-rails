@@ -1,9 +1,14 @@
-<article class="product">
+<article class="product">  
   <header>
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
     <% end %>
+    <% if product.quantity == 0 %>
+ <aside class="sold-out">
+      SOLD OUT!
+  </aside>
+  <% end %>
   </header>
   <p class="description">
     <%= product.description %>
@@ -19,5 +24,7 @@
 
   <aside class="price">
     <%= humanized_money_with_symbol product.price %>
+    
   </aside>
+ 
 </article>
