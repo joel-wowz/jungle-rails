@@ -15,9 +15,18 @@
         </tr>
       </thead>
       <tbody>
+      <% if enhanced_cart.length == 0 %>
+        <div class="alert alert-danger" role="alert">
+ Hey, please go back to the home and collect some items, so that I have money to eat this  month :) .<class="alert-link">
+ <p>
+ <%= link_to "Home", root_path %>
+ </p>
+</div>
+        <% else %>
         <% enhanced_cart.each do |item| %>
           <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
         <% end %>
+     
       </tbody>
       <tfoot>
         <tr>
@@ -30,6 +39,7 @@
         </tr>
       </tfoot>
     </table>
+    
   </div>
 
   <div class="row">
@@ -45,6 +55,7 @@
           data-email="kvirani@gmail.com"
           data-currency="cad">
         </script>
+        <% end %>
       <% end %>
     </div>
   </div>
