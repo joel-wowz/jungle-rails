@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
  before(:each) do
-  @user = User.new(first_name: 'big', last_name: 'daddy',email: 'test@test.com', password: 'test123', password_confirmation: 'test123')
-end
+  @user = User.new(first_name: 'big', last_name: 'daddy',email: 'test@test.com', password: 'pass123', password_confirmation: 'pass123')
+ end
+
 
 describe 'Validations' do
- it 'returns valid with a name' do
+ it 'returns valid if all params exist' do
     expect(@user).to be_valid
  end
 
@@ -19,9 +20,10 @@ describe 'Validations' do
 
 
   it 'should not work with non-unique emails' do
-    user = User.create!(first_name: 'big', last_name:'dADDY', email: 'tEsT@tEsT.cOm', password:'test12',password_confirmation:'test12')
+    user = User.create!(first_name: 'big', last_name:'ronald', email: 'TEST@test.com', password:'gummies',password_confirmation:'gummies')
     expect(@user).to_not be_valid
   end
+
 end
   
 
@@ -37,14 +39,14 @@ describe '.authenticate_with_credentials' do
     failed_attempt = @user.authenticate_with_credentials(@user.email, @user.password = 'lol')
    end
 
-  it.skip 'should auth after user adds spaces' do
+  xit 'should auth after user adds spaces' do
     @user.save
-    add_space = User.authenticate_with_credentials(@user.email = ' TEST@teSt.COM ', @user.password)
+    add_space = User.authenticate_with_credentials(@user.email = ' test@test.com ', @user.password)
     expect(add_space).to eql(@user)
     end
     
     
-  it.skip 'should not care about case-sens' do
+  xit 'should not care about case-sens' do
     @user.save
     case_sens = User.authenticate_with_credentials(@user.email = 'TEST@teSt.cOm', @user.password)
     expect(case_sens).to eql(@user)
