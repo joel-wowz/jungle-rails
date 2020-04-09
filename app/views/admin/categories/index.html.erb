@@ -1,17 +1,13 @@
 
   <tr>
     <td>
-      <% @categories.each do |category| %> 
-         <%= category.name %>
 
-     <h4><% @categories.name %></h4>  
-  </td>
-  <td>
-  </td>
-  <td>
+      <% @categories.each do |category| %> 
+         <li><%= category.name %></li>
     
   </td>
   <% end %>
+
   <td>
      <%= link_to '+ New Categories', [:new, :admin, :category], class: 'btn btn-info' %>
   </td>
