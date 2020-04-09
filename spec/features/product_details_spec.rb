@@ -22,6 +22,7 @@ before :each do
     first(:link, 'Details').click
     # DEBUG
     expect(page).to have_css(".product-detail")
+    
     #pngs are cooler
     #save_and_open_screenshot('products-stuff.png')
     # VERIFY
